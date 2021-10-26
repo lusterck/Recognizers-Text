@@ -48,6 +48,14 @@ from .portuguese.parsers import (PortugueseCurrencyParserConfiguration,
                                  PortugueseTemperatureParserConfiguration,
                                  PortugueseDimensionParserConfiguration,
                                  PortugueseAgeParserConfiguration)
+from .dutch.extractors import (DutchCurrencyExtractorConfiguration,
+                                 DutchTemperatureExtractorConfiguration,
+                                 DutchDimensionExtractorConfiguration,
+                                 DutchAgeExtractorConfiguration)
+from .dutch.parsers import (DutchCurrencyParserConfiguration,
+                                 DutchTemperatureParserConfiguration,
+                                 DutchDimensionParserConfiguration,
+                                 DutchAgeParserConfiguration)
 
 
 class NumberWithUnitOptions(IntFlag):
@@ -191,6 +199,25 @@ class NumberWithUnitRecognizer(Recognizer[NumberWithUnitOptions]):
         self.register_model('AgeModel', Culture.Spanish, lambda options: AgeModel(
             [ExtractorParserModel(NumberWithUnitExtractor(SpanishAgeExtractorConfiguration(
             )), NumberWithUnitParser(SpanishAgeParserConfiguration()))]
+        ))
+        # endregion
+
+        # region Dutch
+        self.register_model('CurrencyModel', Culture.Dutch, lambda options: CurrencyModel(
+            [ExtractorParserModel(NumberWithUnitExtractor(DutchCurrencyExtractorConfiguration(
+            )), NumberWithUnitParser(DutchCurrencyParserConfiguration()))]
+        ))
+        self.register_model('TemperatureModel', Culture.Dutch, lambda options: TemperatureModel(
+            [ExtractorParserModel(NumberWithUnitExtractor(DutchTemperatureExtractorConfiguration(
+            )), NumberWithUnitParser(DutchTemperatureParserConfiguration()))]
+        ))
+        self.register_model('DimensionModel', Culture.Dutch, lambda options: DimensionModel(
+            [ExtractorParserModel(NumberWithUnitExtractor(DutchDimensionExtractorConfiguration(
+            )), NumberWithUnitParser(DutchDimensionParserConfiguration()))]
+        ))
+        self.register_model('AgeModel', Culture.Dutch, lambda options: AgeModel(
+            [ExtractorParserModel(NumberWithUnitExtractor(DutchAgeExtractorConfiguration(
+            )), NumberWithUnitParser(DutchAgeParserConfiguration()))]
         ))
         # endregion
 

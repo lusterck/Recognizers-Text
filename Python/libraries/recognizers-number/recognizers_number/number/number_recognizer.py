@@ -20,6 +20,8 @@ from recognizers_number.number.french.extractors import FrenchNumberExtractor, F
 from recognizers_number.number.french.parsers import FrenchNumberParserConfiguration
 from recognizers_number.number.german.extractors import GermanNumberExtractor, GermanOrdinalExtractor, GermanPercentageExtractor
 from recognizers_number.number.german.parsers import GermanNumberParserConfiguration
+from recognizers_number.number.dutch.extractors import DutchNumberExtractor, DutchOrdinalExtractor, DutchPercentageExtractor
+from recognizers_number.number.dutch.parsers import DutchNumberParserConfiguration
 
 
 class NumberOptions(IntFlag):
@@ -156,6 +158,24 @@ class NumberRecognizer(Recognizer[NumberOptions]):
             AgnosticNumberParserFactory.get_parser(
                 ParserType.PERCENTAGE, FrenchNumberParserConfiguration()),
             FrenchPercentageExtractor()
+        ))
+        # endregion
+
+        # region Dutch
+        self.register_model('NumberModel', Culture.Dutch, lambda options: NumberModel(
+            AgnosticNumberParserFactory.get_parser(
+                ParserType.NUMBER, DutchNumberParserConfiguration()),
+            DutchNumberExtractor(NumberMode.PURE_NUMBER)
+        ))
+        self.register_model('OrdinalModel', Culture.Dutch, lambda options: OrdinalModel(
+            AgnosticNumberParserFactory.get_parser(
+                ParserType.ORDINAL, DutchNumberParserConfiguration()),
+            DutchOrdinalExtractor()
+        ))
+        self.register_model('PercentModel', Culture.Dutch, lambda options: PercentModel(
+            AgnosticNumberParserFactory.get_parser(
+                ParserType.PERCENTAGE, DutchNumberParserConfiguration()),
+            DutchPercentageExtractor()
         ))
         # endregion
 

@@ -37,6 +37,18 @@
             "footer": [ "# pylint: enable=line-too-long" ]
         },
         {
+           "input": [ "Dutch", "Dutch-Numbers" ],
+           "output": "dutch_numeric",
+           "header": [
+               "from .base_numbers import BaseNumbers",
+               "# pylint: disable=line-too-long",
+               "",
+               "",
+               "class DutchNumeric:"
+           ],
+           "footer": [ "# pylint: enable=line-too-long" ]
+        },
+        {
             "input": [ "Spanish", "Spanish-Numbers" ],
             "output": "spanish_numeric",
             "header": [
