@@ -625,7 +625,7 @@ class DutchNumericWithUnit:
                                         ("Millibitcoin", "MILLIBITCOIN"),
                                         ("Satoshi", "SATOSHI")])
     CompoundUnitConnectorRegex = f'(?<spacer>en)'
-    ConnectorToken = f''
+    ConnectorToken = f'(?<spacer>en)'
     CurrencyPrefixList = dict([("Dollar", "$"),
                                ("United States dollar", "amerikaanse $|united states $|us$|us $|u.s. $|u.s $"),
                                ("East Caribbean dollar", "oost-caribische $|oost caribische $|east caribbean $"),

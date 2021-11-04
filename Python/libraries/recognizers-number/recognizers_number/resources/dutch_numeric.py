@@ -22,7 +22,6 @@ class DutchNumeric:
     ZeroToNineIntegerRegex = f'(((een)(?!\\s+((honderdste|duizendste|miljoenste|miljardste|biljoenste)|(nulde|eende|eerste|tweede|derde|vierde|vijfd(e|en)|zesde|zevende|achtst(e|en)|negende|tiend(e|en)|elfde|twaalfde|dertiende|veertiende|vijftiende|zestiende|zeventiende|achttiende|negentiende|twintigste|dertigste|veertigste|vijftigste|zestigste|zeventigste|tachtigste|negentigste))))|(één|drie|zeven|acht|vier|vijf|nul|negen|twee|zes))'
     NegativeNumberTermsRegex = f'(?<negTerm>(min|negatief)\\s+)'
     NegativeNumberSignRegex = f'^{NegativeNumberTermsRegex}.*'
-    GrossRegex = f'(een\\s+)?gros'
     AnIntRegex = f'(een|één)(?=\\s)'
     TenToNineteenIntegerRegex = f'(zeventien|dertien|veertien|achttien|negentien|vijftien|zestien|elf|twaalf|tien)'
     TensNumberIntegerRegex = f'(zeventig|twintig|dertig|tachtig|negentig|veertig|vijftig|zestig)'
@@ -37,6 +36,7 @@ class DutchNumeric:
     RoundNumberIntegerRegexWithLocks = f'(?<=\\b)\\d+\\s*{RoundNumberIntegerRegex}(?=\\b)'
     NumbersWithDozenSuffix = f'(((?<!\\d+\\s*)-\\s*)|(?<=\\b))\\d+\\s+dozijn(en)?(?=\\b)'
     AllIntRegexWithLocks = f'((?<=\\b){AllIntRegex}(?=\\b))'
+    GrossRegex = f'(een\\s+)?gros'
     AllIntRegexWithDozenSuffixLocks = f'(?<=\\b)(((een\\s+)?half\\s+dozijn)|({AllIntRegex}\\s+dozijn(en)?)|{GrossRegex})(?=\\b)'
     RoundNumberOrdinalRegex = f'(honderdste|duizendste|miljoenste|miljardste|biljoenste)'
     BasicOrdinalRegex = f'(nulde|eende|eerste|tweede|derde|vierde|vijfd(e|en)|zesde|zevende|achtst(e|en)|negende|tiend(e|en)|elfde|twaalfde|dertiende|veertiende|vijftiende|zestiende|zeventiende|achttiende|negentiende|twintigste|vijfentwintigste|vijventwintigste|dertigste|veertigste|vijftigste|zestigste|zeventigste|tachtigste|negentigste)'
@@ -52,7 +52,6 @@ class DutchNumeric:
     FractionUnitsRegex = f'((?<onehalf>anderhalve|anderhalf)|(?<quarter>driekwart)|half|halve|helft|kwart)'
     FractionHalfRegex = f'([eë]nhalf|[eë]nhalve|ëneenhal(f|ve))$'
     OneHalfTokens = [r'een', r'half']
-    CurrencyRegex = f'(((?<=\\W|^)-\\s*)|(?<=\\b))\\d+\\s*(b|m|t|g)(?=\\b)'
     FractionNounRegex = f'(?<=\\b)(({AllIntRegex}\\s+(en\\s+)?)?(({AllIntRegex})(\\s+|\\s*-\\s*|\\s*/\\s*)((({AllOrdinalRegex})|({RoundNumberOrdinalRegex}))n?|halven|vierdes|kwart)|{FractionUnitsRegex}))(?=\\b)'
     FractionNounWithArticleRegex = f'(?<=\\b)(({AllIntRegex}\\s+(en\\s)?)?(een)(\\s+|\\s*-\\s*|\\s*/\\s*)(({AllOrdinalRegex})|({RoundNumberOrdinalRegex})|({FractionUnitsRegex}))|{AllIntRegex}[eë]n(eenhalf|half|halve|helft|kwart))(?=\\b)'
     FractionPrepositionRegex = f'(?<!{BaseNumbers.CommonCurrencySymbol}\\s*)(?<=\\b)(?<numerator>({AllIntRegex})|((?<!,)\\d+))\\s+(op|op\\s+de|van\\s+de|uit|uit\\s+de)\\s+(?<denominator>({AllIntRegex})|(\\d+)(?!,))(?=\\b)'
