@@ -47,6 +47,22 @@ class DutchHolidayParserConfiguration(BaseHolidayParserConfiguration):
 
     def _init_holiday_funcs(self) -> Dict[str, Callable[[int], datetime]]:
         local = dict([
+            ('kingsday', DutchHolidayParserConfiguration.kingsday),
+            ('queensday', DutchHolidayParserConfiguration.queensday),
+            ('prinsjesdag', DutchHolidayParserConfiguration.prinsjesdag),
+            ('dodenherdenking', DutchHolidayParserConfiguration.dodenherdenking),
+            ('bevrijdingsdag', DutchHolidayParserConfiguration.bevrijdingsdag),
+            ('sinterklaas', DutchHolidayParserConfiguration.sinterklaas),
+            ('eerstekerstdag', DutchHolidayParserConfiguration.eerstekerstdag),
+            ('tweedekerstdag', DutchHolidayParserConfiguration.tweedekerstdag),
+            ('dagvandearbeid', DutchHolidayParserConfiguration.dagvandearbeid),
+            ('stmartinsday', DutchHolidayParserConfiguration.stmartinsday),
+            ('ketikoti', DutchHolidayParserConfiguration.ketikoti),
+            ('driekoningen', DutchHolidayParserConfiguration.driekoningen),
+            ('fathers', DutchHolidayParserConfiguration.fathers),
+            ('goodfriday', DutchHolidayParserConfiguration.goodfriday),
+            ('mothers', DutchHolidayParserConfiguration.mothers),
+            ('chinesenewyear', DutchHolidayParserConfiguration.chinesenewyear),
             ('maosbirthday', DutchHolidayParserConfiguration.mao_birthday),
             ('yuandan', DutchHolidayParserConfiguration.new_year),
             ('teachersday', DutchHolidayParserConfiguration.teacher_day),
@@ -89,6 +105,70 @@ class DutchHolidayParserConfiguration(BaseHolidayParserConfiguration):
         ])
 
         return {**super()._init_holiday_funcs(), **local}
+
+    @staticmethod
+    def kingsday(year: int) -> datetime:
+        return datetime(year, 4, 27)
+
+    @staticmethod
+    def queensday(year: int) -> datetime:
+        return datetime(year, 4, 27)
+
+    @staticmethod
+    def prinsjesdag(year: int) -> datetime:
+        return datetime(year, 9, 20)
+
+    @staticmethod
+    def dodenherdenking(year: int) -> datetime:
+        return datetime(year, 5, 4)
+
+    @staticmethod
+    def bevrijdingsdag(year: int) -> datetime:
+        return datetime(year, 5, 5)
+
+    @staticmethod
+    def eerstekerstdag(year: int) -> datetime:
+        return datetime(year, 12, 25)
+
+    @staticmethod
+    def tweedekerstdag(year: int) -> datetime:
+        return datetime(year, 12, 26)
+
+    @staticmethod
+    def dagvandearbeid(year: int) -> datetime:
+        return datetime(year, 5, 1)
+
+    @staticmethod
+    def stmartinsday(year: int) -> datetime:
+        return datetime(year, 11, 11)
+
+    @staticmethod
+    def ketikoti(year: int) -> datetime:
+        return datetime(year, 7, 1)
+
+    @staticmethod
+    def sinterklaas(year: int) -> datetime:
+        return datetime(year, 12, 6)
+
+    @staticmethod
+    def driekoningen(year: int) -> datetime:
+        return datetime(year, 1, 6)
+
+    @staticmethod
+    def fathers(year: int) -> datetime:
+        return datetime(year, 1, 20)
+
+    @staticmethod
+    def goodfriday(year: int) -> datetime:
+        return datetime(year, 4, 15)
+
+    @staticmethod
+    def mothers(year: int) -> datetime:
+        return datetime(year, 5, 8)
+
+    @staticmethod
+    def chinesenewyear(year: int) -> datetime:
+        return datetime(year, 2, 1)
 
     @staticmethod
     def mao_birthday(year: int) -> datetime:

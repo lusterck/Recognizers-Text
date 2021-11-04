@@ -697,10 +697,10 @@ CurrencyNameToIsoCodeMap: !dictionary
     Kiribati dollar: _KID
     Guernsey pound: _GGP
     Faroese króna: _FOK
-    Cook Islands dollar: _CKD 
-    British Virgin Islands dollar: _BD 
-    Ascension pound: _AP 
-    Alderney pound: _ALP 
+    Cook Islands dollar: _CKD
+    British Virgin Islands dollar: _BD
+    Ascension pound: _AP
+    Alderney pound: _ALP
     Abkhazian apsar: _AA
     Bitcoin: _XBT
 FractionalUnitNameToCodeMap: !dictionary
@@ -785,6 +785,8 @@ FractionalUnitNameToCodeMap: !dictionary
     Millibitcoin: MILLIBITCOIN
     Satoshi: SATOSHI
 CompoundUnitConnectorRegex: !simpleRegex
+    def: (?<spacer>en)
+ConnectorToken: !simpleRegex
     def: (?<spacer>en)
 CurrencyPrefixList: !dictionary
   types: [ string, string ]

@@ -122,12 +122,13 @@ class DutchIntegerExtractor(BaseNumberExtractor):
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(
                     DutchNumeric.AllIntRegexWithLocks),
-                val='IntegerNum'),
+                val='IntegerDut'),
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(
                     DutchNumeric.AllIntRegexWithDozenSuffixLocks),
-                val='IntegerNum')
+                val='IntegerDut')
         ]
+
 
 
 class DutchDoubleExtractor(BaseNumberExtractor):
@@ -168,7 +169,7 @@ class DutchDoubleExtractor(BaseNumberExtractor):
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(
                     DutchNumeric.DoubleAllFloatRegex),
-                val='DoubleGer'),
+                val='DoubleDut'),
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(
                     DutchNumeric.DoubleExponentialNotationRegex),
@@ -202,11 +203,11 @@ class DutchFractionExtractor(BaseNumberExtractor):
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(
                     DutchNumeric.FractionNounRegex),
-                val='FracGer'),
+                val='FracDut'),
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(
                     DutchNumeric.FractionNounWithArticleRegex),
-                val='FracGer')
+                val='FracDut')
         ]
 
         if mode != NumberMode.Unit:
@@ -214,7 +215,7 @@ class DutchFractionExtractor(BaseNumberExtractor):
                 ReVal(
                     re=RegExpUtility.get_safe_reg_exp(
                         DutchNumeric.FractionPrepositionRegex),
-                    val='FracGer'))
+                    val='FracDut'))
 
 
 class DutchOrdinalExtractor(BaseNumberExtractor):
@@ -236,10 +237,10 @@ class DutchOrdinalExtractor(BaseNumberExtractor):
                 val='OrdinalNum'),
             ReVal(
                 re=DutchNumeric.OrdinalDutchRegex,
-                val='OrdGer'),
+                val='OrdDut'),
             ReVal(
                 re=DutchNumeric.OrdinalRoundNumberRegex,
-                val='OrdGer')
+                val='OrdDut')
         ]
 
 
