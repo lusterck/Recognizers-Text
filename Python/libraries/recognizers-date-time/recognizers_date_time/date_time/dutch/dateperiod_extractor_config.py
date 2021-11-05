@@ -65,6 +65,14 @@ class DutchDatePeriodExtractorConfiguration(DatePeriodExtractorConfiguration):
         return self._future_regex
 
     @property
+    def from_regex(self) -> Pattern:
+        return self._from_regex
+
+    @property
+    def between_token_regex(self) -> Pattern:
+        return self._between_token_regex
+
+    @property
     def week_of_regex(self) -> Pattern:
         return self._week_of_regex
 
@@ -241,6 +249,12 @@ class DutchDatePeriodExtractorConfiguration(DatePeriodExtractorConfiguration):
         self._time_unit_regex = RegExpUtility.get_safe_reg_exp(
             DutchDateTime.TimeUnitRegex
         )
+        self._from_regex = RegExpUtility.get_safe_reg_exp(
+            DutchDateTime.FromRegex)
+
+        self._between_token_regex = RegExpUtility.get_safe_reg_exp(
+            DutchDateTime.BetweenTokenRegex)
+
         self._future_suffix_regex = RegExpUtility.get_safe_reg_exp(
             DutchDateTime.FutureSuffixRegex
         )
@@ -276,10 +290,12 @@ class DutchDatePeriodExtractorConfiguration(DatePeriodExtractorConfiguration):
         self._cardinal_extractor = DutchCardinalExtractor()
 
     def get_from_token_index(self, source: str) -> MatchedIndex:
-        return MatchedIndex(True, source.rfind('from')) if source.endswith('from') else MatchedIndex(False, -1)
+        return MatchedIndex(True, self.from_regex.match(source)) if self.from_regex.match(source) else MatchedIndex(False, -1)
+
 
     def get_between_token_index(self, source: str) -> MatchedIndex:
-        return MatchedIndex(True, source.rfind('between')) if source.endswith('between') else MatchedIndex(False, -1)
+        # return MatchedIndex(True, source.rfind('zwischen')) if source.endswith('zwischen') else MatchedIndex(False, -1)
+        return MatchedIndex(True, self.between_token_regex.match(source)) if self.between_token_regex.match(source) else MatchedIndex(False, -1)
 
     def has_connector_token(self, source: str) -> bool:
         match = self.range_connector_regex.search(source)

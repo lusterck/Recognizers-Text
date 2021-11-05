@@ -63,8 +63,20 @@ class DutchDateTimePeriodExtractorConfiguration(DateTimePeriodExtractorConfigura
         return self._simple_cases_regexes
 
     @property
+    def from_regex(self) -> Pattern:
+        return self._from_regex
+
+    @property
+    def between_token_regex(self) -> Pattern:
+        return self._between_token_regex
+
+    @property
     def preposition_regex(self) -> Pattern:
         return self._preposition_regex
+
+    @property
+    def range_connector_regex(self) -> Pattern:
+        return self._range_connector_regex
 
     @property
     def till_regex(self) -> Pattern:
@@ -213,7 +225,7 @@ class DutchDateTimePeriodExtractorConfiguration(DateTimePeriodExtractorConfigura
             DutchDateTime.GeneralEndingRegex)
         self._middle_pause_regex = RegExpUtility.get_safe_reg_exp(
             DutchDateTime.MiddlePauseRegex)
-        self.range_connector_regex = RegExpUtility.get_safe_reg_exp(
+        self._range_connector_regex = RegExpUtility.get_safe_reg_exp(
             DutchDateTime.RangeConnectorRegex)
         self._token_before_date = DutchDateTime.TokenBeforeDate
         self._within_next_prefix_regex = RegExpUtility.get_safe_reg_exp(
@@ -222,6 +234,9 @@ class DutchDateTimePeriodExtractorConfiguration(DateTimePeriodExtractorConfigura
         self._future_suffix_regex = RegExpUtility.get_safe_reg_exp(
             DutchDateTime.FutureSuffixRegex
         )
+        self._from_regex = RegExpUtility.get_safe_reg_exp(
+            DutchDateTime.FromRegex)
+
         self._date_unit_regex = RegExpUtility.get_safe_reg_exp(
             DutchDateTime.DateUnitRegex
         )
@@ -237,6 +252,9 @@ class DutchDateTimePeriodExtractorConfiguration(DateTimePeriodExtractorConfigura
         self._before_regex = RegExpUtility.get_safe_reg_exp(
             DutchDateTime.BeforeRegex
         )
+        self._between_token_regex = RegExpUtility.get_safe_reg_exp(
+            DutchDateTime.BetweenTokenRegex
+        )
         self._after_regex = RegExpUtility.get_safe_reg_exp(
             DutchDateTime.AfterRegex
         )
@@ -247,16 +265,13 @@ class DutchDateTimePeriodExtractorConfiguration(DateTimePeriodExtractorConfigura
         self._check_both_before_after = DutchDateTime.CheckBothBeforeAfter
 
     def get_from_token_index(self, source: str) -> MatchedIndex:
-        if source.endswith('from'):
-            return MatchedIndex(matched=True, index=source.rfind('from'))
+        return MatchedIndex(True, self.from_regex.match(source)) if self.from_regex.match(source) else MatchedIndex(False, -1)
 
-        return MatchedIndex(matched=False, index=-1)
 
     def get_between_token_index(self, source: str) -> MatchedIndex:
-        if source.endswith('between'):
-            return MatchedIndex(matched=True, index=source.rfind('between'))
-
-        return MatchedIndex(matched=False, index=-1)
+        # return MatchedIndex(True, source.rfind('zwischen')) if source.endswith('zwischen') else MatchedIndex(False, -1)
+        return MatchedIndex(True, self.between_token_regex.match(source)) if self.between_token_regex.match(source) else MatchedIndex(False, -1)
 
     def has_connector_token(self, source: str) -> bool:
-        return regex.fullmatch(self.range_connector_regex, source)
+        match = self.range_connector_regex.search(source)
+        return len(match.group()) == len(source) if match else None
