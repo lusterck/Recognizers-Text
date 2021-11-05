@@ -84,6 +84,18 @@ class DutchNumberParserConfiguration(NumberParserConfiguration):
     def compound_number_language(self) -> bool:
         return self._compound_number_language
 
+    @property
+    def fraction_half_regex(self) -> Pattern:
+        return self._fraction_half_regex
+
+    @property
+    def fraction_units_regex(self) -> Pattern:
+        return self._fraction_units_regex
+
+    @property
+    def one_half_tokens(self) -> List[str]:
+        return self._one_half_tokens
+
     def __init__(self, culture_info=None):
         if culture_info is None:
             culture_info = CultureInfo(Culture.Dutch)
@@ -111,6 +123,11 @@ class DutchNumberParserConfiguration(NumberParserConfiguration):
             DutchNumeric.HalfADozenRegex)
         self._digital_number_regex = RegExpUtility.get_safe_reg_exp(
             DutchNumeric.DigitalNumberRegex)
+        self._fraction_half_regex = RegExpUtility.get_safe_reg_exp(
+            DutchNumeric.FractionHalfRegex)
+        self._fraction_units_regex = RegExpUtility.get_safe_reg_exp(
+            DutchNumeric.FractionUnitsRegex)
+        self._one_half_tokens = DutchNumeric.OneHalfTokens
 
     def normalize_token_set(self, tokens: List[str], context: ParseResult) -> List[str]:
         frac_words: List[str] = list()
@@ -136,7 +153,40 @@ class DutchNumberParserConfiguration(NumberParserConfiguration):
                 frac_words.append(tokens[i])
             i += 1
 
-        return frac_words
+        match_len = 2
+        new_frac = []
+        # The following piece of code is needed to compute the fraction pattern number+'ënhalf'
+        # e.g. 'tweeënhalf' ('two and a half'). Similarly for "ëneenhalf", e.g. tweeëneenhalf.
+        for token in frac_words:
+            if token not in ["/"]:
+                if self.fraction_half_regex.search(token):
+                    new_frac.append(token[:-6])
+                    new_frac.append(self.written_fraction_separator_texts[3])
+                    new_frac.append(self.one_half_tokens[0])
+                    new_frac.append(self.one_half_tokens[1])
+                    match_len = 4
+                elif self.fraction_units_regex.search(token):
+                    if self.fraction_units_regex.search(token).group("onehalf"):
+                        new_frac.append(self.one_half_tokens[0])
+                        new_frac.append(self.written_fraction_separator_texts[3])
+                        new_frac.append(self.one_half_tokens[0])
+                        new_frac.append(self.one_half_tokens[1])
+                        match_len = 4
+                    elif self.fraction_units_regex.search(token).group("quarter"):
+                        new_frac.append(token[:4])
+                        new_frac.append(self.written_fraction_separator_texts[3])
+                        new_frac.append(token[4:5])
+                        match_len = 3
+                    else:
+                        new_frac.append(token)
+                else:
+                    new_frac.append(token)
+
+        # In Dutch, only the last two numbers in fracWords must be considered as fraction
+        if (len(new_frac) > match_len-1 and new_frac[-match_len] != self.word_separator_token):
+            new_frac.insert(len(new_frac) - match_len-1, self.word_separator_token)
+
+        return new_frac
 
     def resolve_composite_number(self, number_str: str) -> int:
         if '-' in number_str:
