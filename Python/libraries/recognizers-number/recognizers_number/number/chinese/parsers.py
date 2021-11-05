@@ -159,6 +159,10 @@ class ChineseNumberParserConfiguration(NumberParserConfiguration):
         return self._pair_regex
 
     @property
+    def compound_number_language(self) -> bool:
+        return self._compound_number_language
+
+    @property
     def round_number_integer_regex(self) -> Pattern:
         return self._round_number_integer_regex
 
@@ -175,6 +179,7 @@ class ChineseNumberParserConfiguration(NumberParserConfiguration):
         self._word_separator_token = ChineseNumeric.WordSeparatorToken
         self._zero_char = ChineseNumeric.ZeroChar
         self._pair_char = ChineseNumeric.PairChar
+        self._compound_number_language = ChineseNumeric.CompoundNumberLanguage
 
         self._round_number_map = ChineseNumeric.RoundNumberMap
         self._digital_number_regex = RegExpUtility.get_safe_reg_exp(

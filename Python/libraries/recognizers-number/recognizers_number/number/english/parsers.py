@@ -80,6 +80,10 @@ class EnglishNumberParserConfiguration(NumberParserConfiguration):
     def written_fraction_separator_texts(self) -> List[str]:
         return self._written_fraction_separator_texts
 
+    @property
+    def compound_number_language(self) -> bool:
+        return self._compound_number_language
+
     def __init__(self, culture_info=None):
         if culture_info is None:
             culture_info = CultureInfo(Culture.English)
@@ -91,6 +95,7 @@ class EnglishNumberParserConfiguration(NumberParserConfiguration):
         self._non_decimal_separator_char = EnglishNumeric.NonDecimalSeparatorChar
         self._half_a_dozen_text = EnglishNumeric.HalfADozenText
         self._word_separator_token = EnglishNumeric.WordSeparatorToken
+        self._compound_number_language = EnglishNumeric.CompoundNumberLanguage
 
         self._written_decimal_separator_texts = EnglishNumeric.WrittenDecimalSeparatorTexts
         self._written_group_separator_texts = EnglishNumeric.WrittenGroupSeparatorTexts

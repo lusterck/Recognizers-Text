@@ -109,6 +109,11 @@ class NumberParserConfiguration(ABC):
     def resolve_composite_number(self, number_str: str) -> int:
         pass
 
+    @property
+    @abstractmethod
+    def compound_number_language(self) -> bool:
+        pass
+
 
 class BaseNumberParser(Parser):
     def __init__(self, config: NumberParserConfiguration):
@@ -116,8 +121,12 @@ class BaseNumberParser(Parser):
         self.supported_types: List[str] = list()
 
         single_int_frac = f'{self.config.word_separator_token}| -|{self._get_key_regex(self.config.cardinal_number_map.keys())}|{self._get_key_regex(self.config.ordinal_number_map.keys())}'
-        self.text_number_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            fr'(?=\b)({single_int_frac})(?=\b)', flags=regex.I | regex.S)
+        if self.config.compound_number_language:
+            self.text_number_regex: Pattern = RegExpUtility.get_safe_reg_exp(
+                fr'({single_int_frac})', flags=regex.I | regex.S)
+        else:
+            self.text_number_regex: Pattern = RegExpUtility.get_safe_reg_exp(
+                fr'(?=\b)({single_int_frac})(?=\b)', flags=regex.I | regex.S)
         self.arabic_number_regex: Pattern = RegExpUtility.get_safe_reg_exp(
             r'\d+', flags=regex.I | regex.S)
         self.round_number_set: List[str] = list(

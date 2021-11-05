@@ -12,7 +12,7 @@ SUPPORTED_CULTURES = {
     Culture.Portuguese: LongFormatMode.DOUBLE_DOT_COMMA,
     Culture.French: LongFormatMode.DOUBLE_DOT_COMMA,
     Culture.Japanese: LongFormatMode.DOUBLE_COMMA_DOT,
-    Culture.Dutch: LongFormatMode.DOUBLE_COMMA_DOT,
+    Culture.Dutch: LongFormatMode.DOUBLE_DOT_COMMA,
 }
 
 

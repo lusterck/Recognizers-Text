@@ -81,6 +81,10 @@ class FrenchNumberParserConfiguration(NumberParserConfiguration):
     def written_fraction_separator_texts(self) -> List[str]:
         return self._written_fraction_separator_texts
 
+    @property
+    def compound_number_language(self) -> bool:
+        return self._compound_number_language
+
     def __init__(self, culture_info=None):
         if culture_info is None:
             culture_info = CultureInfo(Culture.French)
@@ -92,6 +96,7 @@ class FrenchNumberParserConfiguration(NumberParserConfiguration):
         self._non_decimal_separator_char = FrenchNumeric.NonDecimalSeparatorChar
         self._half_a_dozen_text = FrenchNumeric.HalfADozenText
         self._word_separator_token = FrenchNumeric.WordSeparatorToken
+        self._compound_number_language = FrenchNumeric.CompoundNumberLanguage
 
         self._written_decimal_separator_texts = FrenchNumeric.WrittenDecimalSeparatorTexts
         self._written_group_separator_texts = FrenchNumeric.WrittenGroupSeparatorTexts

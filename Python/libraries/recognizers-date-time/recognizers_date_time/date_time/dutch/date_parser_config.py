@@ -194,44 +194,38 @@ class DutchDateParserConfiguration(DateParserConfiguration):
     def get_swift_day(self, source: str) -> int:
         trimmed_text = source.strip().lower()
         swift = 0
-        matches = regex.search(
-            DutchDateParserConfiguration._relative_day_regex, source)
-        if trimmed_text == 'today':
+
+        if trimmed_text == 'vandaag':
             swift = 0
-        elif trimmed_text == 'tomorrow' or trimmed_text == 'tmr':
+        elif trimmed_text == 'morgen' or trimmed_text.endswith('sanderdaags') or trimmed_text.endswith('volgende dag'):
             swift = 1
-        elif trimmed_text == 'yesterday':
+        elif trimmed_text == 'gisteren':
             swift = -1
-        elif trimmed_text.endswith('day after tomorrow') or trimmed_text.endswith('day after tmr'):
+        elif trimmed_text.endswith('namiddag') or trimmed_text.endswith('na middag') or trimmed_text.endswith('na-middag'):
             swift = 2
-        elif trimmed_text.endswith('day before yesterday'):
+        elif trimmed_text.endswith('eergisteren') or trimmed_text.endswith('eer gisteren'):
             swift = -2
-        elif trimmed_text.endswith('day after'):
-            swift = 1
-        elif trimmed_text.endswith('day before'):
+        elif trimmed_text.endswith('voorbije'):
             swift = -1
-        elif matches:
-            swift = self.get_swift(source)
 
         return swift
+
 
     def get_swift_month(self, source: str) -> int:
         return self.get_swift(source)
 
-    def get_swift(self, source: str) -> int:
+    def get_swift_month(self, source: str) -> int:
         trimmed_text = source.strip().lower()
         swift = 0
-        next_prefix_matches = regex.search(
-            DutchDateParserConfiguration._next_prefix_regex, trimmed_text)
-        past_prefix_matches = regex.search(
-            DutchDateParserConfiguration._past_prefix_regex, trimmed_text)
-        if next_prefix_matches:
+
+        if trimmed_text.endswith('volgende') or trimmed_text.endswith('komende'):
             swift = 1
-        elif past_prefix_matches:
+
+        if trimmed_text == 'voorbije' or trimmed_text.endswith('vorige') or trimmed_text.endswith('laatste'):
             swift = -1
 
         return swift
 
     def is_cardinal_last(self, source: str) -> bool:
         trimmed_text = source.strip().lower()
-        return trimmed_text == 'last'
+        return trimmed_text.endswith('laatst') or trimmed_text.endswith('laatste')

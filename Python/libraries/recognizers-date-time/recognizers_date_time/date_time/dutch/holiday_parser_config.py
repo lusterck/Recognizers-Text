@@ -27,11 +27,11 @@ class DutchHolidayParserConfiguration(BaseHolidayParserConfiguration):
     def get_swift_year(self, text: str) -> int:
         trimmed_text = text.strip().lower()
         swift = -10
-        if trimmed_text.startswith('next'):
+        if trimmed_text.startswith('volgende'):
             swift = 1
-        if trimmed_text.startswith('last'):
+        if trimmed_text.startswith('voorbije'):
             swift = -1
-        if trimmed_text.startswith('this'):
+        if trimmed_text.startswith('deze'):
             swift = 0
         return swift
 

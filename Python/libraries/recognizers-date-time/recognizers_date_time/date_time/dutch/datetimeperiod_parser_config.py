@@ -236,10 +236,10 @@ class DutchDateTimePeriodParserConfiguration(DateTimePeriodParserConfiguration):
         return MatchedTimeRange(time_str, begin_hour, end_hour, end_min, True)
 
     def get_swift_prefix(self, source: str) -> int:
-        if source.startswith('next'):
+        if source.startswith('volgende'):
             return 1
 
-        if source.startswith('last'):
+        if source.startswith('voorbije'):
             return -1
 
         return 0

@@ -142,11 +142,11 @@ class DutchDateTimeParserConfiguration(DateTimeParserConfiguration):
     def get_matched_now_timex(self, source: str) -> MatchedTimex:
         source = source.strip().lower()
 
-        if source.endswith('now'):
+        if source.endswith('nu'):
             return MatchedTimex(True, 'PRESENT_REF')
-        elif source in ['recently', 'previously']:
+        elif source in ['onlangs', 'previously']:
             return MatchedTimex(True, 'PAST_REF')
-        elif source in ['as soon as possible', 'asap']:
+        elif source in ['zo snel mogelijk', 'asap']:
             return MatchedTimex(True, 'FUTURE_REF')
 
         return MatchedTimex(False, None)
@@ -154,9 +154,9 @@ class DutchDateTimeParserConfiguration(DateTimeParserConfiguration):
     def get_swift_day(self, source: str) -> int:
         source = source.strip().lower()
 
-        if source.startswith('next'):
+        if source.startswith('volgende'):
             return 1
-        elif source.startswith('last'):
+        elif source.startswith('voorbije'):
             return -1
 
         return 0
@@ -164,9 +164,9 @@ class DutchDateTimeParserConfiguration(DateTimeParserConfiguration):
     def get_hour(self, source: str, hour: int) -> int:
         source = source.strip().lower()
 
-        if source.endswith('morning') and hour >= 12:
+        if source.endswith('s\'ochtends') and hour >= 12:
             return hour - 12
-        elif not source.endswith('morning') and hour < 12 and not (source.endswith('night') and hour < 6):
+        elif not source.endswith('s\'ochtends') and hour < 12 and not (source.endswith('s\'avonds') and hour < 6):
             return hour + 12
 
         return hour
