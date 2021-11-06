@@ -206,6 +206,7 @@ class DutchMergedExtractorConfiguration(MergedExtractorConfiguration):
         # self._fail_fast_regex = RegExpUtility.get_safe_reg_exp(
         #     DutchDateTime.FailFastRegex
         # )
+        self._fail_fast_regex = None
         self._check_both_before_after = DutchDateTime.CheckBothBeforeAfter
         self._time_zone_extractor = BaseTimeZoneExtractor(
             DutchTimeZoneExtractorConfiguration())

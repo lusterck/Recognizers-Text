@@ -136,7 +136,6 @@ class DutchDurationExtractorConfiguration(DurationExtractorConfiguration):
         self._inexact_number_regex = RegExpUtility.get_safe_reg_exp(
             DutchDateTime.InexactNumberRegex
         )
-        self._special_number_with_unit_regex = None
         self._check_both_before_after = DutchDateTime.CheckBothBeforeAfter
         # TODO When the implementation for these properties is added, change the None values to their respective Regexps
         self._special_number_unit_regex = None

@@ -142,7 +142,7 @@ class DutchDateTimeParserConfiguration(DateTimeParserConfiguration):
     def get_matched_now_timex(self, source: str) -> MatchedTimex:
         source = source.strip().lower()
 
-        if source.endswith('nu'):
+        if self.now_regex.search(source):
             return MatchedTimex(True, 'PRESENT_REF')
         elif source in ['onlangs', 'previously']:
             return MatchedTimex(True, 'PAST_REF')

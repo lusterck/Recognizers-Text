@@ -34,6 +34,8 @@ class DutchTimePeriodExtractorConfiguration(TimePeriodExtractorConfiguration):
     def till_regex(self) -> Pattern:
         return self._till_regex
 
+
+
     @property
     def time_of_day_regex(self) -> Pattern:
         return self._time_of_day_regex
@@ -102,6 +104,18 @@ class DutchTimePeriodExtractorConfiguration(TimePeriodExtractorConfiguration):
     def time_number_combined_with_unit(self):
         return self._time_number_combined_with_unit
 
+    @property
+    def from_regex(self) -> Pattern:
+        return self._from_regex
+
+    @property
+    def between_token_regex(self) -> Pattern:
+        return self._between_token_regex
+
+    @property
+    def range_connector_regex(self) -> Pattern:
+        return self._range_connector_regex
+
     def __init__(self):
         super().__init__()
         self._check_both_before_after = DutchDateTime.CheckBothBeforeAfter
@@ -125,20 +139,22 @@ class DutchTimePeriodExtractorConfiguration(TimePeriodExtractorConfiguration):
         self._token_before_date = DutchDateTime.TokenBeforeDate
         self._pure_number_regex = [DutchDateTime.PureNumFromTo, DutchDateTime.PureNumFromTo]
         self._options = DateTimeOptions.NONE
+        self._range_connector_regex = RegExpUtility.get_safe_reg_exp(
+            DutchDateTime.RangeConnectorRegex)
+        self._from_regex = RegExpUtility.get_safe_reg_exp(
+            DutchDateTime.FromRegex)
+        self._between_token_regex = RegExpUtility.get_safe_reg_exp(
+            DutchDateTime.BetweenTokenRegex
+        )
+        self._preposition_regex = RegExpUtility.get_safe_reg_exp(
+            DutchDateTime.PrepositionRegex)
 
     def get_from_token_index(self, source: str) -> MatchedIndex:
-        index = -1
-        if source.endswith('from'):
-            index = source.rfind('from')
-            return MatchedIndex(matched=True, index=index)
-        return MatchedIndex(matched=False, index=index)
+        return MatchedIndex(True, self.from_regex.search(source).start()) if self.from_regex.search(source) else MatchedIndex(False, -1)
 
     def get_between_token_index(self, source: str) -> MatchedIndex:
-        index = -1
-        if source.endswith('between'):
-            index = source.rfind('between')
-            return MatchedIndex(matched=True, index=index)
-        return MatchedIndex(matched=False, index=index)
+        return MatchedIndex(True, self.between_token_regex.search(source).start()) if self.between_token_regex.search(source) else MatchedIndex(False, -1)
 
-    def is_connector_token(self, source: str):
-        return source == "and"
+    def is_connector_token(self, source: str) -> bool:
+        match = self.range_connector_regex.search(source)
+        return len(match.group()) == len(source) if match else None

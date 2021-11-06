@@ -212,9 +212,6 @@ class DutchDateParserConfiguration(DateParserConfiguration):
 
 
     def get_swift_month(self, source: str) -> int:
-        return self.get_swift(source)
-
-    def get_swift_month(self, source: str) -> int:
         trimmed_text = source.strip().lower()
         swift = 0
 
@@ -228,4 +225,4 @@ class DutchDateParserConfiguration(DateParserConfiguration):
 
     def is_cardinal_last(self, source: str) -> bool:
         trimmed_text = source.strip().lower()
-        return trimmed_text.endswith('laatst') or trimmed_text.endswith('laatste')
+        return trimmed_text.endswith('laatst') or trimmed_text.endswith('laatste') or trimmed_text.endswith('vorige')

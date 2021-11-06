@@ -100,6 +100,10 @@ class DutchTimeExtractorConfiguration(TimeExtractorConfiguration):
     def time_unit_regex(self) -> Pattern:
         return self._time_unit_regex
 
+    @property
+    def range_connector_regex(self) -> Pattern:
+        return self._range_connector_regex
+
     def __init__(self):
         super().__init__()
         self._desc_regex = RegExpUtility.get_safe_reg_exp(
@@ -175,3 +179,9 @@ class DutchTimeExtractorConfiguration(TimeExtractorConfiguration):
             DutchDateTime.TimeBeforeAfterRegex)
         self._time_zone_extractor = BaseTimeZoneExtractor(
             DutchTimeZoneExtractorConfiguration())
+        self._range_connector_regex = RegExpUtility.get_safe_reg_exp(
+            DutchDateTime.RangeConnectorRegex)
+
+    def is_connector_token(self, source: str) -> bool:
+        match = self.range_connector_regex.search(source)
+        return len(match.group()) == len(source) if match else None

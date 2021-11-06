@@ -290,13 +290,17 @@ class DutchDatePeriodExtractorConfiguration(DatePeriodExtractorConfiguration):
         self._cardinal_extractor = DutchCardinalExtractor()
 
     def get_from_token_index(self, source: str) -> MatchedIndex:
-        return MatchedIndex(True, self.from_regex.match(source)) if self.from_regex.match(source) else MatchedIndex(False, -1)
-
+        return MatchedIndex(True, self.from_regex.search(source).start()) if self.from_regex.search(source) else MatchedIndex(False, -1)
 
     def get_between_token_index(self, source: str) -> MatchedIndex:
-        # return MatchedIndex(True, source.rfind('zwischen')) if source.endswith('zwischen') else MatchedIndex(False, -1)
-        return MatchedIndex(True, self.between_token_regex.match(source)) if self.between_token_regex.match(source) else MatchedIndex(False, -1)
+        return MatchedIndex(True, self.between_token_regex.search(source).start()) if self.between_token_regex.search(source) else MatchedIndex(False, -1)
 
-    def has_connector_token(self, source: str) -> bool:
+    def has_connector_token(self, source: str) -> MatchedIndex:
         match = self.range_connector_regex.search(source)
-        return len(match.group()) == len(source) if match else None
+        if match:
+            return MatchedIndex(True, match.start())
+
+        return MatchedIndex(False, -1)
+
+    def is_connector_token(self, source: str) -> MatchedIndex:
+        return self.range_connector_regex.search(source)
