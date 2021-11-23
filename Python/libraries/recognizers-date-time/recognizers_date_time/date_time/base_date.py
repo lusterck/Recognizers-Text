@@ -373,7 +373,7 @@ class BaseDateExtractor(DateTimeExtractor, AbstractYearExtractor):
 
             if result.start >= 0:
                 front_string = source[0:result.start or 0]
-                match = regex.search(self.config.month_end, front_string)
+                match = self.config.month_end.search(front_string)
 
                 if match is not None:
                     start_index = match.start()
@@ -660,7 +660,7 @@ class BaseDateExtractor(DateTimeExtractor, AbstractYearExtractor):
 
     @staticmethod
     def strip_inequality(extract_result: ExtractResult, regexp: Pattern, in_prefix: bool):
-        if regex.search(regexp, extract_result.text):
+        if regexp.search(extract_result.text):
             original_length = len(extract_result.text)
             extract_result.text = str(regexp).replace(extract_result.text, '').strip()
             if in_prefix:

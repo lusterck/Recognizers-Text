@@ -272,7 +272,7 @@ class BaseDatePeriodExtractor(DateTimeExtractor):
         matches = list(regex.finditer(self.config.year_period_regex, text))
 
         for match in matches:
-            match_year = regex.search(self.config.year_regex, match.group())
+            match_year = self.config.year_regex.search(match.group())
 
             # Single year cases like "1998"
             if match_year is not None and (match_year.end() - match_year.start()) == len(match.group()):
@@ -789,8 +789,8 @@ class BaseDatePeriodExtractor(DateTimeExtractor):
 
     # Cases like "2 days from today", "2 weeks before yesterday", "3 months after tomorrow"
     def is_relative_duration_date(self, er: ExtractResult):
-        is_ago = regex.search(self.config.ago_regex, er.text)
-        is_later = regex.search(self.config.later_regex, er.text)
+        is_ago = self.config.ago_regex.search(er.text)
+        is_later = self.config.later_regex.search(er.text)
         return is_ago or is_later
 
     def is_date_relative_to_now_or_today(self, er: ExtractResult):
@@ -806,7 +806,7 @@ class BaseDatePeriodExtractor(DateTimeExtractor):
     @staticmethod
     def __get_token_for_regex_matching(source: str, regexp: Pattern, er: ExtractResult, in_prefix: bool) -> List[Token]:
         tokens = []
-        match = regex.search(regexp, source)
+        match = regexp.search(source)
         is_match_at_edge = False if not match else source.strip().endswith(match.group().strip()) if in_prefix else\
             source.strip().startswith(match.group().strip())
 

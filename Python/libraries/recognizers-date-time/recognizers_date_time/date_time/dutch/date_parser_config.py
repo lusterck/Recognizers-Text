@@ -195,9 +195,9 @@ class DutchDateParserConfiguration(DateParserConfiguration):
         trimmed_text = source.strip().lower()
         swift = 0
 
-        if trimmed_text == 'vandaag':
+        if self.now_regex.match(trimmed_text) is not None:
             swift = 0
-        elif trimmed_text == 'morgen' or trimmed_text.endswith('sanderdaags') or trimmed_text.endswith('volgende dag'):
+        elif self.next_regex.match(trimmed_text) is not None:
             swift = 1
         elif trimmed_text == 'gisteren':
             swift = -1
@@ -215,14 +215,14 @@ class DutchDateParserConfiguration(DateParserConfiguration):
         trimmed_text = source.strip().lower()
         swift = 0
 
-        if trimmed_text.endswith('volgende') or trimmed_text.endswith('komende'):
+        if self._next_prefix_regex.search(trimmed_text):
             swift = 1
 
-        if trimmed_text == 'voorbije' or trimmed_text.endswith('vorige') or trimmed_text.endswith('laatste'):
+        if self._past_prefix_regex.search(trimmed_text):
             swift = -1
 
         return swift
 
     def is_cardinal_last(self, source: str) -> bool:
         trimmed_text = source.strip().lower()
-        return trimmed_text.endswith('laatst') or trimmed_text.endswith('laatste') or trimmed_text.endswith('vorige')
+        return self._past_prefix_regex.match(trimmed_text) is not None

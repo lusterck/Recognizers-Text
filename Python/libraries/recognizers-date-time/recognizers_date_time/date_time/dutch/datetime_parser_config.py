@@ -60,6 +60,14 @@ class DutchDateTimeParserConfiguration(DateTimeParserConfiguration):
         return self._now_regex
 
     @property
+    def previous_prefix_regex(self) -> Pattern:
+        return self._previous_prefix_regex
+
+    @property
+    def next_prefix_regex(self) -> Pattern:
+        return self._next_prefix_regex
+
+    @property
     def am_time_regex(self) -> Pattern:
         return self._am_time_regex
 
@@ -112,6 +120,10 @@ class DutchDateTimeParserConfiguration(DateTimeParserConfiguration):
         self._time_parser = config.time_parser
         self._now_regex = RegExpUtility.get_safe_reg_exp(
             DutchDateTime.NowRegex)
+        self._previous_prefix_regex = RegExpUtility.get_safe_reg_exp(
+            DutchDateTime.PreviousPrefixRegex)
+        self._next_prefix_regex = RegExpUtility.get_safe_reg_exp(
+            DutchDateTime.NextPrefixRegex)
         self._am_time_regex = RegExpUtility.get_safe_reg_exp(
             DutchDateTime.AMTimeRegex)
         self._pm_time_regex = RegExpUtility.get_safe_reg_exp(
@@ -141,12 +153,11 @@ class DutchDateTimeParserConfiguration(DateTimeParserConfiguration):
 
     def get_matched_now_timex(self, source: str) -> MatchedTimex:
         source = source.strip().lower()
-
         if self.now_regex.search(source):
             return MatchedTimex(True, 'PRESENT_REF')
-        elif source in ['onlangs', 'previously']:
+        elif self.previous_prefix_regex.search(source):
             return MatchedTimex(True, 'PAST_REF')
-        elif source in ['zo snel mogelijk', 'asap']:
+        elif self.next_prefix_regex.search(source):
             return MatchedTimex(True, 'FUTURE_REF')
 
         return MatchedTimex(False, None)
@@ -154,9 +165,9 @@ class DutchDateTimeParserConfiguration(DateTimeParserConfiguration):
     def get_swift_day(self, source: str) -> int:
         source = source.strip().lower()
 
-        if source.startswith('volgende'):
+        if self.next_prefix_regex.search(source):
             return 1
-        elif source.startswith('voorbije'):
+        elif self.previous_prefix_regex.search(source):
             return -1
 
         return 0
@@ -164,9 +175,9 @@ class DutchDateTimeParserConfiguration(DateTimeParserConfiguration):
     def get_hour(self, source: str, hour: int) -> int:
         source = source.strip().lower()
 
-        if source.endswith('s\'ochtends') and hour >= 12:
+        if self.am_time_regex.search(source):
             return hour - 12
-        elif not source.endswith('s\'ochtends') and hour < 12 and not (source.endswith('s\'avonds') and hour < 6):
+        elif not self.am_time_regex.search(source) and hour < 12 and not (self.pm_time_regex.search(source) and hour < 6):
             return hour + 12
 
         return hour

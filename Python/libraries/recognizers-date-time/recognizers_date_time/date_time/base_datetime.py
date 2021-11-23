@@ -270,7 +270,7 @@ class BaseDateTimeExtractor(DateTimeExtractor):
 
     def verify_end_token(self, source: str, token: Token) -> Token:
         after_str = source[token.end:]
-        match = regex.search(self.config.suffix_regex, after_str)
+        match = self.config.suffix_regex.search(after_str)
 
         if match:
             token.end += len(match.group())
@@ -302,8 +302,7 @@ class BaseDateTimeExtractor(DateTimeExtractor):
             if not before:
                 continue
 
-            match = regex.search(
-                self.config.time_of_today_before_regex, before)
+            match = self.config.time_of_today_before_regex.search(before)
             if match:
                 begin = match.start()
                 end = extract_result.start + extract_result.length

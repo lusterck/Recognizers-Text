@@ -95,7 +95,7 @@ class DutchNumeric:
     OneNumberRangeLessRegex2 = f'(?<number2>({NumberSplitMark}.)+)\\s*{LessOrEqualSuffix}'
     OneNumberRangeLessSeparateRegex = f'({EqualRegex}\\s+(?<number1>({NumberSplitMark}.)+)(\\s+of\\s+){LessRegexNoNumberSucceed})|({LessRegex}\\s+(?<number1>({NumberSplitMark}.)+)(\\s+of\\s+){EqualRegexNoNumberSucceed})'
     OneNumberRangeEqualRegex = f'{EqualRegex}\\s*(de\\s+)?(?<number1>({NumberSplitMark}.)+)'
-    TwoNumberRangeRegex1 = f'tussen\\s*(de\\s+)?(?<number1>({NumberSplitMark}.)+)\\s+en\\s+(de\\s+)?(?<number2>({NumberSplitMark}.)+)'
+    TwoNumberRangeRegex1 = f'tussen\\s*(de\\s+)?(?<number1>({NumberSplitMark}.)+)\\s+(en||à)\\s+(de\\s+)?(?<number2>({NumberSplitMark}.)+)'
     TwoNumberRangeRegex2 = f'({OneNumberRangeMoreRegex1}|{OneNumberRangeMoreRegex2})\\s*(en|(,\\s*)?maar|,)\\s*({OneNumberRangeLessRegex1}|{OneNumberRangeLessRegex2})'
     TwoNumberRangeRegex3 = f'({OneNumberRangeLessRegex1}|{OneNumberRangeLessRegex2})\\s*(en|maar|,)\\s*({OneNumberRangeMoreRegex1}|{OneNumberRangeMoreRegex2})'
     TwoNumberRangeRegex4 = f'(van\\s+)?(?<number1>({AllIntRegex}|{AllFloatRegex}|{AllOrdinalRegex}|{DigitsNumberRegex}))\\s*{TillRegex}\\s*(de\\s+)?(?<number2>({AllIntRegex}|{AllFloatRegex}|{AllOrdinalRegex}|{DigitsNumberRegex}))'

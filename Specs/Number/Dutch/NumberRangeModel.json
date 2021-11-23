@@ -2,7 +2,7 @@
   {
     "Input": "1995-01",
     "Results": [],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Dit nummer is hoger dan twintig en kleiner of gelijk dan vijfendertig.",
@@ -15,7 +15,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Het nummer ligt tussen de 20 en 30.",
@@ -28,7 +28,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Hij is geëindigd tussen de tiende en de vijftiende.",
@@ -41,7 +41,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Hij scoort tussen min tien en vijftien.",
@@ -54,7 +54,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Hij staat hoger dan de tiende maar lager dan de vijftiende.",
@@ -67,7 +67,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Dit is een getal wat groter is dan 100, maar kleiner als 300",
@@ -80,7 +80,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Dit aantal is hoger of gelijk aan honderd, maar lager of gelijk aan driehonderd",
@@ -93,7 +93,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Er zijn maximum 100 en op zijn minst 20 appels.",
@@ -106,7 +106,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Deze appels zijn ongeveer 20~100 gram",
@@ -119,7 +119,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Het bereik van de getallen is 20 tot 100",
@@ -132,7 +132,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Het bereik van de getallen is 20 tot en met 100",
@@ -145,7 +145,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Het bereik van de getallen gaat van duizend tot vijftienhonderd.",
@@ -158,7 +158,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Het nummer ligt boven de 1000 en onder de 1500",
@@ -171,7 +171,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Het getal is hoger dan een kwart maar lager als de helft.",
@@ -184,7 +184,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Dit getal is groter of gelijk aan drieduizendnegenhonderdvijfenzestig.",
@@ -197,7 +197,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Dit getal is groter als 4.565",
@@ -210,7 +210,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Hij is meer dan dertig jaren oud.",
@@ -223,7 +223,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Zijn leeftijd is niet minder dan dertig.",
@@ -236,7 +236,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Er zijn ongeveer vijfhonderd of meer van deze producten.",
@@ -249,7 +249,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Meer dan de helft van de mensen is aanwezig.",
@@ -262,7 +262,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Meer dan 1/2 van de mensen is aanwezig.",
@@ -275,7 +275,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Zoek de priemgetallen die kleiner of gelijk aan 100 zijn",
@@ -288,7 +288,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Er zijn ongeveer vijfhonderd of minder van deze producten.",
@@ -301,7 +301,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Vind de priemgetallen die < = 100 zijn",
@@ -314,7 +314,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Zijn lengte is onder de 170.",
@@ -327,7 +327,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Zijn lengte is kleiner dan 170.",
@@ -340,7 +340,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Minder dan duizend reuzenpanda's leven nog steeds in het wild.",
@@ -353,7 +353,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "x is gelijk aan honderdzeventig.",
@@ -366,7 +366,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "x>10 en y<20",
@@ -386,7 +386,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "x is groter dan 10 en kleiner dan 20. y is niet meer als 50 en niet kleiner als 20.",
@@ -406,12 +406,12 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Een vierde is een breuk",
     "Results": [],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Het getal is gelijk aan 20.",
@@ -424,7 +424,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Gelijk aan 20, is het aantal studenten in onze klas niet significant.",
@@ -437,22 +437,22 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "0612345678 is een telefoonnummer.",
     "Results": [],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "+31612345678 is een telefoonnummer.",
     "Results": [],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "+31 6 12 34 56 78 is een telefoonnummer.",
     "Results": [],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Zojn resultaat is 200 of meer",
@@ -465,7 +465,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Zijn resultaat is 200 of hoger dan 190",
@@ -478,7 +478,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Het resultaat is 200 of hoger",
@@ -491,7 +491,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Zijn score is minder dan of gelijk aan 30",
@@ -504,7 +504,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Zijn score is gelijk aan of minder dan 30",
@@ -517,7 +517,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Zijn score is minstens of gelijk aan 30",
@@ -530,7 +530,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Zijn score is gelijk of meer dan 30",
@@ -543,7 +543,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Zijn score is gelijk aan 5000 of minder",
@@ -556,7 +556,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Zijn score is gelijk aan 5000 of minder dan 6000",
@@ -576,7 +576,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Zijn resultaat is gelijk aan 5000 of meer dan dat",
@@ -589,7 +589,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Het resultaat is gelijk aan 5000 of meer dan 4500",
@@ -609,7 +609,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Het resultaat is minder dan 5000 of gelijk aan",
@@ -622,7 +622,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Het kost meer dan 5000 of evenveel",
@@ -635,7 +635,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Zijn resultaat is meer dan 5000 of gelijk aan",
@@ -648,7 +648,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Het resultaat is meer dan 5000 of gelijk aan 6000",
@@ -668,7 +668,7 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   },
   {
     "Input": "Het resultaat is gelijk aan 5000 of minder dan 5000",
@@ -688,6 +688,6 @@
         }
       }
     ],
-    "NotSupportedByDesign": "javascript,python,java"
+    "NotSupportedByDesign": "javascript,java"
   }
 ]

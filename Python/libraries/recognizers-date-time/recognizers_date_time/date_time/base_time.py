@@ -103,7 +103,7 @@ class BaseTimeExtractor(DateTimeExtractor):
         result: List[Token] = list()
 
         for pattern in self.config.time_regex_list:
-            matches = list(regex.finditer(pattern, source))
+            matches = list(pattern.finditer(source))
 
             # @TODO Workaround to avoid incorrect partial-only matches. Remove after time regex reviews across languages.
             matches = list(filter(lambda match: self.lth_check(match), matches))
